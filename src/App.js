@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Listcolor from './components/Listcolor';
+
+
 
 function App() {
+  const colors = ["red" , "green" , "blue" , "black" , "pink" , "white" , "yellow" , "violet" , "aqua"];
+  const[col , setcol] = useState([]);
+  const[currcol , setcurrcol] = useState("white");
+  const setcolor = ()=>{
+    setcol(colors);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+     <h2>Color Picker</h2>
+     <div className="cont" style={{backgroundColor:currcol}}>
+           <div className="container my-3">
+              <Listcolor col = {col} setcurrcol = {setcurrcol}  setcol = {setcol}/>
+           </div>
+          <button onClick={setcolor} className='btn btn-success' >Pick a color</button>
+     </div>
+   </>
   );
 }
 
